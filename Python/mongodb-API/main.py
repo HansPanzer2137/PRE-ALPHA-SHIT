@@ -8,6 +8,7 @@ import socket
 import uuid
 import re
 import urllib.request
+import datetime
 
 #import atexit
 
@@ -111,7 +112,7 @@ def INSERT_HOST_DATA():
         print(mydb.list_collection_names())
         mycol = mydb[API.DBhost_stats]
         try:
-            conHost={"name": str(config.os), "address": str(config.ip), "mac": str(config.mac_addr)
+            conHost={"name": str(config.os), "address": str(config.ip), "mac": str(config.mac_addr), "time": str((datetime.datetime.now()).strftime("%H:%M:%S")),"day": str((datetime.date.today()).strftime("%d/%m/%Y"))
             }
 
             inser_handler = mycol.insert_one(conHost)
