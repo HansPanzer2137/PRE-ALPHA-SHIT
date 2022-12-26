@@ -10,6 +10,24 @@ import re
 import urllib.request
 import datetime
 
+import socket #socket for get/set/update data with "worker nodes"
+
+# Basic model of update/get/set
+
+# So we has got single API machine, and something about 50000 free ports
+#It means that i can easylly bind any connection via host<->node
+
+#max connected nodes in one time: 50000, update every 5 secounds
+# so max is 50000*5 = 250000 nodes per host, hosts can be more that one, system for free host&port search will be writed in 1.2v
+# 
+# 
+# For Erasmus project purpose 50000 connected devices in one time
+# 
+# 
+# 
+# Socket binding is process thats reserve socket, in first stage i will write only connection beetween local defined host and client runned on 2 laptops
+#   
+
 #import atexit
 
 import pymongo #pip3 install pymongo
@@ -83,10 +101,21 @@ class API_Database():
         self.DBhost_stats="CLIENTS"
         self.DBinformations="Ersamus"
 
+class ConnectionSocket():
+    def __init__(self):
+        self.HostSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.HostIP = "127.0.0.1"
+        self.usedPorts = {}
+    
+    def ListenHandler(self):
+        while(True):
+            (clientConnected, clientAddress) = self.HostSocket.accept()
 
             
 
 config=Config()        
+
+
 def ConfigCreate():
     global config
     if(config.configExist==False):
@@ -130,3 +159,6 @@ ConfigCreate()
 INSERT_HOST_DATA()
 log="API started"
 print(time.strftime("%H:%M:%S", time.localtime())+"  "+log)
+
+
+
