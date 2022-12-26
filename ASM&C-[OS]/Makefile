@@ -5,7 +5,7 @@ make install:
 	
 
 	gcc -m32 -c bib/utils.c -o packKern/utils.o -std=gnu99 -ffreestanding -O1 -Wall -Wextra  
-	gcc -m32 -c bib/SHELL/SHELL.c -o packKern/SHELL.c -std=gnu99 -ffreestanding -O1 -Wall -Wextra -lm
+	gcc -m32 -c bib/SHELL/shell.c -o packKern/shell.c -std=gnu99 -ffreestanding -O1 -Wall -Wextra -lm
 	gcc -m32 -c bib/char.c -o packKern/char.o -std=gnu99 -ffreestanding -O1 -Wall -Wextra 
 	gcc -m32 -c kernel.c -o packKern/kernel.o -std=gnu99 -ffreestanding -O1 -Wall -Wextra 
 	ld -m elf_i386 -T linker.ld packKern/utils.o packKern/char.o packKern/boot.o packKern/kernel.o -o packKern/kernelBIN/TempleOS32.bin 
@@ -17,7 +17,7 @@ make install:
 
 
 make test-kernel:
-	qemu-system-i386 -kernel MyOS.bin
+	qemu-system-i386 -kernel TempleOS32.bin
 
 make run:
 	qemu-system-i386 -cdrom packKern/ISO/TempleOS32.iso
