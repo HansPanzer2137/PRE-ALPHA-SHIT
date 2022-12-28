@@ -131,7 +131,8 @@ def INSERT_HOST_DATA():
 class SocketAPI_MagicShit():
     def __init__(self):
         self.API_ip = "127.0.0.1"
-        self.portsHandler = []
+        self.portsFreeHandler = []
+        self.portsUsedHandler = []
 
     def sockListen(self):
         self.sock = socket.socket()
@@ -139,18 +140,21 @@ class SocketAPI_MagicShit():
         self.sock.listen()
 
         for i in range(2000, 2077):
-            self.portsHandler.append(i)
+            self.portsFreeHandler.append(i)
 
         while True:
             (clientConn, clientAddr) = self.sock.accept()
             print("Accepted connection to control room from IP:"+str(clientAddr[0])+" MAC:"+str(clientAddr[1])+". Sending info about free ports")
 
-            for i in range(len(self.portsHandler)): 
+            for i in range(len(self.portsFreeHandler)): 
                 sockValider = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                if not (sockValider.connect_ex(('127.0.0.1', self.portsHandler[i])) == 0):
-                    print("Port "+str(self.portsHandler[i])+"is free, sending data to connection")
-                    dataB = self.portsHandler[i]
+                if not (sockValider.connect_ex(('127.0.0.1', self.portsFreeHandler[i])) == 0):
+                    print("Port "+str(self.portsFreeHandler[i])+"is free, sending data to connection")
+                    dataB = self.portsFreeHandler[i]
+                    self.portsUsedHandler.append(dataB)
+                    self.portsFreeHandler.remove(self.portsFreeHandler[i])
                     break
+
             clientConn.send(str(dataB).encode())
 
 
