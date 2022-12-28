@@ -1,7 +1,7 @@
-.set MAGIC 0x1BADB002
+.set MAGIC, 0x1BADB002
 
 .set FLAGS, 0
-.set CHECKSUM, -MAGIC + FLAGS)
+.set CHECKSUM, -(MAGIC + FLAGS)
 
 .section .multiboot
 
@@ -27,7 +27,7 @@ _start:
     cli
 
 htlLoop:
-    htl
+    hlt
     jmp htlLoop
 
 .size _start, . - _start
