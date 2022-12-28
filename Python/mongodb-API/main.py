@@ -9,6 +9,8 @@ import uuid
 import re
 import urllib.request
 import datetime
+import pickle
+
 
 #import atexit
 
@@ -126,7 +128,46 @@ def INSERT_HOST_DATA():
         log_file.append(command+"\n")
         print(command)
 
+class SocketAPI_MagicShit():
+    def __init__(self):
+        self.API_ip = "127.0.0.1"
+        self.portsHandler = []
+
+    def sockListen(self):
+        self.sock = socket.socket()
+        self.sock.bind((self.API_ip, 2137))
+        self.sock.listen()
+
+        for i in range(2000, 2077):
+            self.portsHandler.append(i)
+
+        while True:
+            (clientConn, clientAddr) = self.sock.accept()
+            print("Accepted connection to control room from IP:"+str(clientAddr[0])+" MAC:"+str(clientAddr[1])+". Sending info about free ports")
+
+            for i in range(len(self.portsHandler)): 
+                sockValider = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                if not (sockValider.connect_ex(('127.0.0.1', self.portsHandler[i])) == 0):
+                    print("Port "+str(self.portsHandler[i])+"is free, sending data to connection")
+                    dataB = self.portsHandler[i]
+                    break
+            clientConn.send(str(dataB).encode())
+
+
+
+
+
+    
+
+
+
 ConfigCreate()
 INSERT_HOST_DATA()
 log="API started"
 print(time.strftime("%H:%M:%S", time.localtime())+"  "+log)
+
+eventValider = SocketAPI_MagicShit()
+eventValider.sockListen()
+
+
+
