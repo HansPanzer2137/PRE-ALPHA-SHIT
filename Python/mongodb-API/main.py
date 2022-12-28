@@ -159,17 +159,19 @@ def INSERT_HOST_DATA():
 
 class SocketAPI_MagicShit():
     def __init__(self):
-        self.API_ip = "127.0.0.1"
+        self.API_ip = "192.168.0.123"
         self.portsFreeHandler = []
         self.portsUsedHandler = []
+
+        for i in range(2000, 2077):
+            self.portsFreeHandler.append(i)
 
     def sockListen(self):
         self.sock = socket.socket()
         self.sock.bind((self.API_ip, 2137))
         self.sock.listen()
 
-        for i in range(2000, 2077):
-            self.portsFreeHandler.append(i)
+        dataB = 0
 
         while True:
             (clientConn, clientAddr) = self.sock.accept()
@@ -195,7 +197,6 @@ class SocketAPI_MagicShit():
 
 
 ConfigCreate()
-INSERT_HOST_DATA()
 log="API started"
 print(time.strftime("%H:%M:%S", time.localtime())+"  "+log)
 

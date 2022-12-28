@@ -55,7 +55,7 @@ class Ui_ControlPanelLogin(object):
 
 class ConnectionVIASocket():
     def __init__(self):
-        self.baobab = "127.0.0.1"
+        self.baobab = "192.168.0.123"
         self.mac = ':'.join(re.findall('..', '%012x' % uuid.getnode()))
         self.ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
         self.os = platform.system()
