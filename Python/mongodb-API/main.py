@@ -201,6 +201,7 @@ print(time.strftime("%H:%M:%S", time.localtime())+"  "+log)
 
 eventValider = SocketAPI_MagicShit()
 eventValider.sockListen()
+#
 
 
 
