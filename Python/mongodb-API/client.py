@@ -55,11 +55,14 @@ class Ui_ControlPanelLogin(object):
 
 class ConnectionVIASocket():
     def __init__(self):
-        self.baobab = "192.168.0.123"
+        self.baobab = "192.168.0.41"
         self.mac = ':'.join(re.findall('..', '%012x' % uuid.getnode()))
         self.ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
         self.os = platform.system()
         self.sock2137 = 0
+        self.freeApiPort=0
+
+
     def DebugSocket(self):
         if self.os == "Windows":
             os.system("cls")
@@ -97,10 +100,24 @@ class ConnectionVIASocket():
 
             data = self.sock2137.recv(1024)
             print(data.decode())
-
+            self.freeApiPort = int(data.decode())
 
         except:
             print("Error in Getting free connections")
+
+    def ConnectToApi(self):
+        try:
+            connection = socket.socket()
+            connection.connect((self.baobab, self.freeApiPort))
+            try:
+                connection.send("I am here to kill CIA ~ Terry Davis".encode())
+            except:
+                print("error in sending data")
+        except:
+            print("Erorr in socket connection/creation")
+
+
+
             
 
 

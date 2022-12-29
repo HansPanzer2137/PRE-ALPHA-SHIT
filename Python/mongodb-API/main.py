@@ -159,7 +159,7 @@ def INSERT_HOST_DATA():
 
 class SocketAPI_MagicShit():
     def __init__(self):
-        self.API_ip = "192.168.0.123"
+        self.API_ip = "192.168.0.41"
         self.portsFreeHandler = []
         self.portsUsedHandler = []
 
@@ -184,8 +184,9 @@ class SocketAPI_MagicShit():
                     dataB = self.portsFreeHandler[i]
                     self.portsUsedHandler.append(dataB)
                     self.portsFreeHandler.remove(self.portsFreeHandler[i])
-                    break
-
+                    sock2137 = socket.socket()
+                    sock2137.bind((self.API_ip, self.portsFreeHandler[i]))
+                    sock2137.listen()
             clientConn.send(str(dataB).encode())
 
 
