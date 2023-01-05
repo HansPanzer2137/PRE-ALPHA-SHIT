@@ -184,16 +184,7 @@ class SocketAPI_MagicShit():
                     dataB = self.portsFreeHandler[i]
                     self.portsUsedHandler.append(dataB)
                     self.portsFreeHandler.remove(self.portsFreeHandler[i])
-                    sock2137 = socket.socket()
-                    sock2137.bind((self.API_ip, self.portsFreeHandler[i]))
-                    sock2137.listen()
             clientConn.send(str(dataB).encode())
-
-
-
-
-
-    
 
 
 
