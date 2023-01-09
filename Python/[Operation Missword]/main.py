@@ -65,46 +65,50 @@ def Crypt42_decode(mesHash):
 	lenBuff = 0
 	while lenBuff < len(message): #get len of string
 		if(message[lenBuff]=="#" or message[lenBuff]=="/"): #if "#" or "/"
-			for kurwo in range(0, 5): # get i and 4 more chars 
+			for kurwo in range(0, 7): # get i and 4 more chars 
 				messageBuff = messageBuff+message[lenBuff+kurwo] # save it to buffer
 			print("message buff: "+messageBuff) #print buffer
 			match messageBuff:
-				case "#/000": mess.append("a") #if buffer blah blah blah
-				case "/###0": mess.append("b")
-				case "/#/#0": mess.append("c")
-				case "/##00": mess.append("d")
-				case "#0000": mess.append("e")
-				case "##/#0": mess.append("f")
-				case "//#00": mess.append("g")
-				case "####0": mess.append("h")
-				case "##000": mess.append("i")
-				case "#///0": mess.append("j")
-				case "/#/00": mess.append("k")
-				case "#/##0": mess.append("l")
-				case "//000": mess.append("m")
-				case "/#000": mess.append("n")
-				case "///00": mess.append("o")
-				case "#//#0": mess.append("p")
-				case "#/#00": mess.append("r")
-				case "###00": mess.append("s")
-				case "/0000": mess.append("t")
-				case "##/00": mess.append("u")
-				case "#//00": mess.append("w")
-				case "/#//0": mess.append("y")
-				case "//##0": mess.append("z")
-				case "###/0": mess.append("v")
-				case "/##/0": mess.append("x")
-				case "/////": mess.append("0")
-				case "#////": mess.append("1")
-				case "##///": mess.append("2")
-				case "###//": mess.append("3")
-				case "####/": mess.append("4")
-				case "#####": mess.append("5")
-				case "/####": mess.append("6")
-				case "//###": mess.append("7")
-				case "///##": mess.append("8")
-				case "////#": mess.append("9")
-			lenBuff+=5 # add  i+5 
+				case "#/00000": mess.append("a") #if buffer blah blah blah
+				case "/###000": mess.append("b")
+				case "/#/#000": mess.append("c")
+				case "/##0000": mess.append("d")
+				case "#000000": mess.append("e")
+				case "##/#000": mess.append("f")
+				case "//#0000": mess.append("g")
+				case "####000": mess.append("h")
+				case "##00000": mess.append("i")
+				case "#///000": mess.append("j")
+				case "/#/0000": mess.append("k")
+				case "#/##000": mess.append("l")
+				case "//00000": mess.append("m")
+				case "/#00000": mess.append("n")
+				case "///0000": mess.append("o")
+				case "#//#000": mess.append("p")
+				case "#/#0000": mess.append("r")
+				case "###0000": mess.append("s")
+				case "/000000": mess.append("t")
+				case "##/0000": mess.append("u")
+				case "#//0000": mess.append("w")
+				case "/#//000": mess.append("y")
+				case "//##000": mess.append("z")
+				case "###/000": mess.append("v")
+				case "/##/000": mess.append("x")
+				case "/////00": mess.append("0")
+				case "#////00": mess.append("1")
+				case "##///00": mess.append("2")
+				case "###//00": mess.append("3")
+				case "####/00": mess.append("4")
+				case "#####00": mess.append("5")
+				case "/####00": mess.append("6")
+				case "//###00": mess.append("7")
+				case "///##00": mess.append("8")
+				case "////#00": mess.append("9")
+				case ':': wordsBuffer[i]="#######"
+				case '.': wordsBuffer[i]="///////"
+				case "//////0": mess.append(",")
+				case "######0": mess.append("/")
+			lenBuff+=7 # add  i+5 
 		if(lenBuff>=len(message)):
 			break
 		if(message[lenBuff]=="@"):
