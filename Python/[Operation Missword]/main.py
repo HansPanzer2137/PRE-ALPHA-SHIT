@@ -104,8 +104,8 @@ def Crypt42_decode(mesHash):
 				case "//###00": mess.append("7")
 				case "///##00": mess.append("8")
 				case "////#00": mess.append("9")
-				case ':': wordsBuffer[i]="#######"
-				case '.': wordsBuffer[i]="///////"
+				case "#######": mess.append(":")
+				case "///////": mess.append(".")
 				case "//////0": mess.append(",")
 				case "######0": mess.append("/")
 			lenBuff+=7 # add  i+5 
