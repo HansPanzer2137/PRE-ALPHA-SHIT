@@ -10,49 +10,53 @@ def Crytp42_256(words):
 
 
 def Crypt42_encode(words):
-    wordsBuffer = list(words)
-    for i in range(len(wordsBuffer)):
-        match wordsBuffer[i]:
-            case 'a' | 'A': wordsBuffer[i]="#/000"
-            case 'b' | 'B': wordsBuffer[i]="/###0"
-            case 'c' | 'C': wordsBuffer[i]="/#/#0"
-            case 'd' | 'D': wordsBuffer[i]="/##00"
-            case 'e' | 'E': wordsBuffer[i]="#0000"
-            case 'f' | 'F': wordsBuffer[i]="##/#0"
-            case 'g' | 'G': wordsBuffer[i]="//#00"
-            case 'h' | 'H': wordsBuffer[i]="####0"
-            case 'i' | 'I': wordsBuffer[i]="##000"
-            case 'j' | 'J': wordsBuffer[i]="#///0"
-            case 'k' | 'K': wordsBuffer[i]="/#/00"
-            case 'l' | 'L': wordsBuffer[i]="#/##0"
-            case 'm' | 'M': wordsBuffer[i]="//000"
-            case 'n' | 'N': wordsBuffer[i]="/#000"
-            case 'o' | 'O': wordsBuffer[i]="///00"
-            case 'p' | 'P': wordsBuffer[i]="#//#0"
-            case 'r' | 'R': wordsBuffer[i]="#/#00"
-            case 's' | 'S': wordsBuffer[i]="###00"
-            case 't' | 'T': wordsBuffer[i]="/0000"
-            case 'u' | 'U': wordsBuffer[i]="##/00"
-            case 'w' | 'W': wordsBuffer[i]="#//00"
-            case 'y' | 'Y': wordsBuffer[i]="/#//0"
-            case 'z' | 'Z': wordsBuffer[i]="//##0"
-            case 'v' | 'V': wordsBuffer[i]="###/0"
-            case 'x' | 'X': wordsBuffer[i]="/##/0"
-            case '0': wordsBuffer[i]="/////"
-            case '1': wordsBuffer[i]="#////"
-            case '2': wordsBuffer[i]="##///"
-            case '3': wordsBuffer[i]="###//"
-            case '4': wordsBuffer[i]="####/"
-            case '5': wordsBuffer[i]="#####"
-            case '6': wordsBuffer[i]="/####"
-            case '7': wordsBuffer[i]="//###"
-            case '8': wordsBuffer[i]="///##"
-            case '9': wordsBuffer[i]="////#"
-            case ' ': wordsBuffer[i]="@"
-    print("przed zmianą: "+str(words))
-    print("po zmianie: "+str(''.join(wordsBuffer)))
-    global hash
-    hash = str(''.join(wordsBuffer))
+	wordsBuffer = list(words)
+	for i in range(len(wordsBuffer)):
+		match wordsBuffer[i]:
+			case 'a' | 'A': wordsBuffer[i]="#/00000"
+			case 'b' | 'B': wordsBuffer[i]="/###000"
+			case 'c' | 'C': wordsBuffer[i]="/#/#000"
+			case 'd' | 'D': wordsBuffer[i]="/##0000"
+			case 'e' | 'E': wordsBuffer[i]="#000000"
+			case 'f' | 'F': wordsBuffer[i]="##/#000"
+			case 'g' | 'G': wordsBuffer[i]="//#0000"
+			case 'h' | 'H': wordsBuffer[i]="####000"
+			case 'i' | 'I': wordsBuffer[i]="##00000"
+			case 'j' | 'J': wordsBuffer[i]="#///000"
+			case 'k' | 'K': wordsBuffer[i]="/#/0000"
+			case 'l' | 'L': wordsBuffer[i]="#/##000"
+			case 'm' | 'M': wordsBuffer[i]="//00000"
+			case 'n' | 'N': wordsBuffer[i]="/#00000"
+			case 'o' | 'O': wordsBuffer[i]="///0000"
+			case 'p' | 'P': wordsBuffer[i]="#//#000"
+			case 'r' | 'R': wordsBuffer[i]="#/#0000"
+			case 's' | 'S': wordsBuffer[i]="###0000"
+			case 't' | 'T': wordsBuffer[i]="/000000"
+			case 'u' | 'U': wordsBuffer[i]="##/0000"
+			case 'w' | 'W': wordsBuffer[i]="#//0000"
+			case 'y' | 'Y': wordsBuffer[i]="/#//000"
+			case 'z' | 'Z': wordsBuffer[i]="//##000"
+			case 'v' | 'V': wordsBuffer[i]="###/000"
+			case 'x' | 'X': wordsBuffer[i]="/##/000"
+			case '0': wordsBuffer[i]="/////00"
+			case '1': wordsBuffer[i]="#////00"
+			case '2': wordsBuffer[i]="##///00"
+			case '3': wordsBuffer[i]="###//00"
+			case '4': wordsBuffer[i]="####/00"
+			case '5': wordsBuffer[i]="#####00"
+			case '6': wordsBuffer[i]="/####00"
+			case '7': wordsBuffer[i]="//###00"
+			case '8': wordsBuffer[i]="///##00"
+			case '9': wordsBuffer[i]="////#00"
+			case ':': wordsBuffer[i]="#######"
+			case '.': wordsBuffer[i]="///////"
+			case ',': wordsBuffer[i]="//////0"
+			case '/': wordsBuffer[i]="######0"
+			case ' ': wordsBuffer[i]="@"
+	print("przed zmianą: "+str(words))
+	print("po zmianie: "+str(''.join(wordsBuffer)))
+	global hash
+	hash = str(''.join(wordsBuffer))
 
 def Crypt42_decode(mesHash):
 	message = list(mesHash)
