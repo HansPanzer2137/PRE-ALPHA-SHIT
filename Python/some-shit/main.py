@@ -20,6 +20,8 @@ x509.NameAttribute(NameOID.LOCALITY_NAME, u"Raleigh"),
 x509.NameAttribute(NameOID.ORGANIZATION_NAME, u"KXH-RESEARCH"),
 x509.NameAttribute(NameOID.COMMON_NAME, u"KXH-RESEARCH.us")])
 
+
+
 cert = x509.CertificateBuilder().subject_name(
     subject
     ).issuer_name(
