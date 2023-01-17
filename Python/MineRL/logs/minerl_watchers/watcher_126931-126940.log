@@ -1,0 +1,2 @@
+2023-01-17 19:53:20 kxh-research process_watcher[126991] INFO Process watcher started between parent 126931 and child 126940 
+2023-01-17 19:53:52 kxh-research process_watcher[126991] INFO Child is not running anymore, launcher can terminate.
